@@ -1,13 +1,14 @@
 import { useState } from "react";
 import css from "./User.module.css";
+import PropTypes from "prop-types";
 
-function User({ followers, avatar, tweets }) {
+function User({ followers, avatar, tweets, following }) {
   const [follow, setFollow] = useState(followers);
-  const [btnState, setBtnState] = useState(true);
+  const [btnState, setBtnState] = useState(following);
 
   const handelClick = () => {
     setBtnState(!btnState);
-    btnState ? setFollow(follow + 1) : setFollow(follow - 1);
+    btnState ? setFollow(follow - 1) : setFollow(follow + 1);
   };
 
   return (
@@ -23,7 +24,7 @@ function User({ followers, avatar, tweets }) {
           <p>{follow.toLocaleString("en")} Followers</p>
         </li>
       </ul>
-      {btnState ? (
+      {!btnState ? (
         <button
           style={{
             backgroundColor: "#EBD8FF",
@@ -50,4 +51,10 @@ function User({ followers, avatar, tweets }) {
   );
 }
 
+User.propTypes = {
+  followers: PropTypes.number.isRequired,
+  avatar: PropTypes.string.isRequired,
+  tweets: PropTypes.number.isRequired,
+  following: PropTypes.bool.isRequired,
+};
 export default User;

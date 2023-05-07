@@ -1,4 +1,7 @@
 .section{
     display: flex;
-    justify-content: space-evenly
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 80px;
 }
