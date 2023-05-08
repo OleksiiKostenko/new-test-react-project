@@ -1,8 +1,8 @@
-import { useEffect } from 'react';
-import { useState } from 'react';
-import { getArrayLangth, getUsers } from '../../service/getQuery';
-import User from '../User/User';
-import css from './UserCard.module.css';
+import { useEffect } from "react";
+import { useState } from "react";
+import { getArrayLangth, getUsers } from "../../service/getQuery";
+import User from "../User/User";
+import css from "./UserCard.module.css";
 
 function UserCard() {
   const [users, setUsers] = useState([]);
@@ -10,12 +10,15 @@ function UserCard() {
   const [arrayLangth, setArrayLangth] = useState([]);
 
   useEffect(() => {
-    getUsers(page).then(data => setUsers(prev => [...prev, ...data]));
-    getArrayLangth().then(data => setArrayLangth(data));
+    getArrayLangth().then((data) => setArrayLangth(data));
+  }, []);
+
+  useEffect(() => {
+    getUsers(page).then((data) => setUsers((prev) => [...prev, ...data]));
   }, [page]);
 
   const handelClick = () => {
-    setPage(prevPage => prevPage + 1);
+    setPage((prevPage) => prevPage + 1);
   };
   return (
     <>

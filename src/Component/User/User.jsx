@@ -21,7 +21,7 @@ function User({ followers, avatar, tweets, following, id }) {
     if (first) {
       changeUsers(id, followQuantity, btnState);
     }
-  }, [id, followQuantity, btnState]);
+  }, [first, id, followQuantity, btnState]);
 
   return (
     <>
