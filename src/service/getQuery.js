@@ -37,7 +37,7 @@ export async function changeUsers(id, followers, following) {
       method: 'put',
       url: `${BASE_URL}/${id}`,
       data: {
-        followers: followers,
+        followers: !following ? followers : followers - 1,
         following: !following,
       },
     });

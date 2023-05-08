@@ -4,41 +4,29 @@ import PropTypes from 'prop-types';
 import { changeUsers } from '../../service/getQuery';
 
 function User({ followers, avatar, tweets, following, id }) {
-  const [follow, setFollow] = useState(followers);
+  const [followQuantity, setFollowQuantity] = useState(followers);
   const [btnState, setBtnState] = useState(following);
 
   const handelClick = () => {
     setBtnState(!btnState);
-
-    btnState ? setFollow(follow + 1) : setFollow(follow - 1);
-    changeUsers(id, follow, btnState);
+    btnState ? setFollowQuantity(followQuantity - 1) : setFollowQuantity(followQuantity + 1);
+    changeUsers(id, followers, btnState);
   };
 
   return (
     <>
       <div className={css.img_wrapp}>
-        <img className={css.img} src={avatar} alt="" />
+        <img className={css.img} src={avatar} alt="avatar" />
       </div>
       <ul className={css.text}>
         <li className={css.list_el}>
           <p>{tweets} Tweets</p>
         </li>
         <li className={css.list_el}>
-          <p>{follow.toLocaleString('en')} Followers</p>
+          <p>{followQuantity.toLocaleString('en')} Followers</p>
         </li>
       </ul>
-      {btnState ? (
-        <button
-          style={{
-            backgroundColor: '#5CD3A8',
-          }}
-          className={css.btn}
-          type="button"
-          onClick={handelClick}
-        >
-          FOLLOWING
-        </button>
-      ) : (
+      {!btnState ? (
         <button
           style={{
             backgroundColor: '#EBD8FF',
@@ -48,6 +36,17 @@ function User({ followers, avatar, tweets, following, id }) {
           onClick={handelClick}
         >
           FOLLOW
+        </button>
+      ) : (
+        <button
+          style={{
+            backgroundColor: '#5CD3A8',
+          }}
+          className={css.btn}
+          type="button"
+          onClick={handelClick}
+        >
+          FOLLOWING
         </button>
       )}
     </>
