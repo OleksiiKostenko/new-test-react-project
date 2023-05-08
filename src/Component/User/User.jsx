@@ -10,7 +10,7 @@ function User({ followers, avatar, tweets, following, id }) {
   const handelClick = () => {
     setBtnState(!btnState);
 
-    btnState ? setFollow(follow - 1) : setFollow(follow + 1);
+    btnState ? setFollow(follow + 1) : setFollow(follow - 1);
     changeUsers(id, follow, btnState);
   };
 
