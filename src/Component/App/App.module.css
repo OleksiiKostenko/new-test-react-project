@@ -1,9 +1,30 @@
 .section{
-    margin: auto;
-    width: 1200px;
-    display: flex;
+    margin: 80px auto;
     flex-wrap: wrap;
+    display: flex;
     gap:30px;
     justify-content: center;
-    margin-top: 80px;
+
+}
+
+@media (max-width: 600px) {
+    .section {
+        flex-wrap: nowrap;
+        flex-direction: column;
+        display: flex;
+        align-items: center;
+        width: 600px;
+    }
+}
+
+@media (min-width: 800px) {
+    .section {
+        width: 800px;
+    }
+}
+@media (min-width: 1200px) {
+    .section {
+        width: 1200px;
+        gap: 30px;
+    }
 }
