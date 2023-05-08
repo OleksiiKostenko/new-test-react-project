@@ -1,16 +1,21 @@
-import { Toaster } from "react-hot-toast";
-import UserCard from "../UserCard/UserCard";
-import css from "./App.module.css";
+import { Route, Routes } from "react-router-dom";
+import Layout from "../Layout/Layout";
+import { lazy } from "react";
+
+const Home = lazy(() => import("../../Page/Home"));
+const Tweets = lazy(() => import("../../Page/Tweets"));
+
 function App() {
   return (
-    <main>
-      <div>
-        <Toaster position="top-center" reverseOrder={false} />
-      </div>
-      <section className={css.section}>
-        <UserCard></UserCard>
-      </section>
-    </main>
+    <>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="/tweets" element={<Tweets />} />
+          <Route path="*" element={<Home />} />
+        </Route>
+      </Routes>
+    </>
   );
 }
 
