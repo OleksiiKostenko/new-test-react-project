@@ -1,15 +1,17 @@
 import { useEffect } from 'react';
 import { useState } from 'react';
-import { getUsers } from '../../service/getQuery';
+import { getArrayLangth, getUsers } from '../../service/getQuery';
 import User from '../User/User';
 import css from './UserCard.module.css';
 
 function UserCard() {
   const [users, setUsers] = useState([]);
   const [page, setPage] = useState(1);
+  const [arrayLangth, setArrayLangth] = useState([]);
 
   useEffect(() => {
     getUsers(page).then(data => setUsers(prev => [...prev, ...data]));
+    getArrayLangth().then(data => setArrayLangth(data));
   }, [page]);
 
   const handelClick = () => {
@@ -29,13 +31,16 @@ function UserCard() {
               avatar={avatar}
               following={following}
               tweets={tweets}
+              id={id}
             ></User>
           </div>
         </div>
       ))}
-      <button type="button" onClick={handelClick}>
-        Load More
-      </button>
+      {users.length !== arrayLangth.length && (
+        <button className={css.btn} type="button" onClick={handelClick}>
+          Load More
+        </button>
+      )}
     </>
   );
 }
