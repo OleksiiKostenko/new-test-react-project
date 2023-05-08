@@ -20,7 +20,7 @@ function UserCard() {
       {users?.map(({ followers, id, avatar, tweets, following }) => (
         <div key={id} className={css.card}>
           <div className={css.bgi_wrapp}>
-            <img className={css.logo} src="../src/assets/logo.png" alt="Logo" />
+            <img className={css.logo} src="/src/assets/logo.png" alt="Logo" />
             <div className={css.border_bottom}></div>
           </div>
           <div className={css.user_wrapp}>
