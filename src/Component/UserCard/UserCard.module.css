@@ -14,7 +14,8 @@
     background-image: url(/src/assets/bgi.png);
     background-repeat: no-repeat;
 }
-.logo{
+.logo_wrapp{
+    background-image: url(/src/assets/logo.png);
     position: relative;
     height: 22px;
     width: 76px;
