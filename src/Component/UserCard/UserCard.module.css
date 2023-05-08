@@ -17,6 +17,9 @@
 .logo_wrapp{
     background-image: url(/src/assets/logo.png);
     position: relative;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 999;
     height: 22px;
     width: 76px;
     margin: 20px 0 0 20px;
