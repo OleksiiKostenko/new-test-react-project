@@ -13,7 +13,6 @@
         flex-direction: column;
         display: flex;
         align-items: center;
-        width: 600px;
     }
 }
 
@@ -53,4 +52,28 @@
 
 .btn:hover {
     background-color: #5CD3A8;
+}
+
+.title{
+    font-family: 'Montserrat';
+    color: #5CD3A8;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 60px;
+    line-height: 60px;
+    text-transform: uppercase;
+    text-align: center;
+}
+.wrapp_title{
+    height: 300px;
+    display: flex;
+    align-items: center;
+    margin: 0 auto;
+}
+.section{
+    display: flex;
+    align-items: center;
+    max-width: 1200px;
+    min-height: 700px;
+    margin: 50px auto;
 }

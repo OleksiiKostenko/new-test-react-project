@@ -1,19 +1,27 @@
-import { Suspense } from "react";
-import { Toaster } from "react-hot-toast";
-import { NavLink, Outlet } from "react-router-dom";
-import css from "../Layout/Layout.module.css";
+import { Suspense } from 'react';
+import { Toaster } from 'react-hot-toast';
+import { NavLink, Outlet } from 'react-router-dom';
+import css from '../Layout/Layout.module.css';
+import Loader from '../Loader/Loader';
+import { styled } from 'goober';
+
+const StyledLink = styled(NavLink)`
+  &.active {
+    color: #5cd3a8;
+  }
+`;
 
 function Layout() {
   return (
     <>
       <header className={css.header}>
         <nav className={css.nav}>
-          <NavLink className={css.nav_link} to="/">
+          <StyledLink className={css.nav_link} to="/">
             Home
-          </NavLink>
-          <NavLink className={css.nav_link} to="/tweets">
+          </StyledLink>
+          <StyledLink className={css.nav_link} to="/tweets">
             Tweets
-          </NavLink>
+          </StyledLink>
         </nav>
       </header>
 
@@ -21,11 +29,10 @@ function Layout() {
         <div>
           <Toaster position="top-center" reverseOrder={false} />
         </div>
-        <Suspense fallback={<div>Loading...</div>}>
+        <Suspense fallback={<Loader></Loader>}>
           <Outlet />
         </Suspense>
       </main>
-      <footer className={css.footer}></footer>
     </>
   );
 }

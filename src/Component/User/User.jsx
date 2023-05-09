@@ -1,8 +1,9 @@
-import { useState } from "react";
-import css from "./User.module.css";
-import PropTypes from "prop-types";
-import { changeUsers } from "../../service/getQuery";
-import { useEffect } from "react";
+import { useState } from 'react';
+import css from './User.module.css';
+import PropTypes from 'prop-types';
+import { changeUsers } from '../../service/getQuery';
+import { useEffect } from 'react';
+import { toast } from 'react-hot-toast';
 
 function User({ followers, avatar, tweets, following, id }) {
   const [followQuantity, setFollowQuantity] = useState(followers);
@@ -12,9 +13,24 @@ function User({ followers, avatar, tweets, following, id }) {
   const handelClick = () => {
     setBtnState(!btnState);
     setFirst(true);
+    btnState ? setFollowQuantity(followQuantity - 1) : setFollowQuantity(followQuantity + 1);
     btnState
-      ? setFollowQuantity(followQuantity - 1)
-      : setFollowQuantity(followQuantity + 1);
+      ? toast('NOT FOLLOW', {
+          icon: '😔',
+          style: {
+            color: '#5CD3A8',
+            fontFamily: 'Montserrat',
+            width: '196px',
+          },
+        })
+      : toast('FOLLOWING', {
+          icon: '🔥',
+          style: {
+            color: '#5CD3A8',
+            fontFamily: 'Montserrat',
+            width: '196px',
+          },
+        });
   };
 
   useEffect(() => {
@@ -33,13 +49,13 @@ function User({ followers, avatar, tweets, following, id }) {
           <p>{tweets} Tweets</p>
         </li>
         <li className={css.list_el}>
-          <p>{followQuantity.toLocaleString("en")} Followers</p>
+          <p>{followQuantity.toLocaleString('en')} Followers</p>
         </li>
       </ul>
       {!btnState ? (
         <button
           style={{
-            backgroundColor: "#EBD8FF",
+            backgroundColor: '#EBD8FF',
           }}
           className={css.btn}
           type="button"
@@ -50,7 +66,7 @@ function User({ followers, avatar, tweets, following, id }) {
       ) : (
         <button
           style={{
-            backgroundColor: "#5CD3A8",
+            backgroundColor: '#5CD3A8',
           }}
           className={css.btn}
           type="button"

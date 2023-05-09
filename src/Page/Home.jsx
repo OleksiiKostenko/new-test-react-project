@@ -1,8 +1,17 @@
+import { useEffect } from 'react';
+import css from '../Page/Page.module.css';
+
 function Home() {
+  useEffect(() => {
+    scroll({ top, behavior: 'smooth' });
+  }, []);
+
   return (
-    <main>
-      <h1>All yours Tweets</h1>
-    </main>
+    <section className={css.section}>
+      <div className={css.wrapp_title}>
+        <h1 className={css.title}>All your favorite Tweets in one place</h1>
+      </div>
+    </section>
   );
 }
 
